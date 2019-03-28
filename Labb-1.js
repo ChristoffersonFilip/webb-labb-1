@@ -1,13 +1,17 @@
-function callApi(){
-    var httpRequest = new XMLHttpRequest();
+document.getElementById('button').addEventListener
+('click', loadQuestions);
 
-    httpRequest.open("GET", "https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=multiple", true);
+function loadQuestions(){
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open('GET', 'https://opentdb.com/api.php?amount=3', true);
+
+    httpRequest.onload = function(){
+        if(this.status == 200){
+            var question = JSON.parse(this.responseText);
+            console.log(question);
+        
+        }
+    }
     httpRequest.send();
 
-}
-
-function correctQuiz(answers){
-    if (answers === 10){
-        "You answered all questions correct, well done!"
-    }
 }
