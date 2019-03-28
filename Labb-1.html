@@ -3,39 +3,14 @@
 <head>
     <meta charset="utf-8">
     <title>Page Title</title>
+    <script src="Labb-1.js"></script>
 </head>
 <body>
-    <button id="button">Get questions</button>
+    <button id="button" onclick="loadQuestions()">Get questions</button>
     <div id="text"></div>
 
-    <h1>Question 1</h1>
-        <div id="question"></div>
+    
 
-    <h1>Answers</h1>
-    <div id="answers"></div>
-
-
-    <script>
-        document.getElementById('button').addEventListener
-        ('click', loadQuestions);
-
-        function loadQuestions(){
-            var httpRequest = new XMLHttpRequest();
-            httpRequest.open('GET', 'https://opentdb.com/api.php?amount=3', true);
-
-            httpRequest.onload = function(){
-                if(this.status == 200){
-                    var question = JSON.parse(this.responseText);
-                    console.log(question);
-                
-                }
-            }
-            httpRequest.send();
-
-        }
-
-
-    </script>
 
 </body>
 </html>
