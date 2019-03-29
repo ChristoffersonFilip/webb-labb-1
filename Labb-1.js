@@ -4,6 +4,9 @@ var question = "none";
 var choice = "none";
 var answer = "none";
 
+function get(x){
+        return document.getElementById(x);
+    }
 
 function loadQuestions(){
     var httpRequest = new XMLHttpRequest();
@@ -11,9 +14,7 @@ function loadQuestions(){
     
 
     //used to not have to repeat document.getElementById constantly
-    function get(x){
-        return document.getElementById(x);
-    }
+    
 
     httpRequest.onload = function(){
         if(this.status == 200){
@@ -58,5 +59,13 @@ var score = function(){
 }
 
 function correctAnswers(){
-    
+    if (correct == 1) {
+        get('result').innerHTML = "You got 1 questions right";
+    }
+    if (correct == 2){
+        get('result').innerHTML = "You got 2 questions right";
+    }
+    if (correct == 3){
+        get('result').innerHTML = "You got 3 questions right";
+    }
 }
