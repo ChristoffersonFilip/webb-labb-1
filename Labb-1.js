@@ -4,6 +4,7 @@ var question = "none";
 var choice = "none";
 var answer = "none";
 
+//used to not have to repeat document.getElementById constantly
 function get(x){
         return document.getElementById(x);
     }
@@ -13,7 +14,7 @@ function loadQuestions(){
     httpRequest.open('GET', 'https://opentdb.com/api.php?amount=3&type=multiple', true);
     
 
-    //used to not have to repeat document.getElementById constantly
+    
     
 
     httpRequest.onload = function(){
@@ -38,13 +39,25 @@ function loadQuestions(){
 
 
             get('question').innerHTML = "Question: " +question1;
-           // get('question1-answers').innerHTML = "Answer Options: "+question1_alternatives;
             get('question2').innerHTML = "Question 2: " +question2;
-            get('question2-answers').innerHTML = "Answer Options: "+question2_alternatives;
             get('question3').innerHTML = "Question 3: " +question3;
-            get('question3-answers').innerHTML = "Answer Options: "+question3_alternatives;
 
-            get('question1-answers').innerHTML += "<input type='radio' name='choices' value='A'>"+question1_alternatives+"<button onclick='checkAnswer()'>";
+            //Creates the radio buttons for answering questions
+            for (const question_answer in question1_alternatives) {
+                get('question1-answers').innerHTML += "<input type='radio' name='choices' value='"+question_answer+"'>"
+                +question1_alternatives[question_answer]+"</input>";
+            }
+
+            for (const question_answer in question2_alternatives) {
+                get('question2-answers').innerHTML += "<input type='radio' name='choices2' value='"+question_answer+"'>"
+                +question2_alternatives[question_answer]+"</input>";
+            }
+
+            for (const question_answer in question3_alternatives) {
+                get('question3-answers').innerHTML += "<input type='radio' name='choices3' value='"+question_answer+"'>"
+                +question3_alternatives[question_answer]+"</input>";
+            }
+            
 
         }
     }
@@ -69,3 +82,4 @@ function correctAnswers(){
         get('result').innerHTML = "You got 3 questions right";
     }
 }
+loadQuestions();
