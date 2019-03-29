@@ -1,4 +1,4 @@
-var correct = 0;
+var correct = 3;
 var incorrect = 0;
 var question = "none";
 var choice = "none";
@@ -23,19 +23,24 @@ function loadQuestions(){
             console.log(question);
 
             var question1 = question[0].question;
-            var question1_alternatives =  [question[0].incorrect_answers[0], question[0].incorrect_answers[1], question[0].incorrect_answers[2], question[0].correct_answer ];
+            var question1_alternatives =  [question[0].incorrect_answers[0], question[0].incorrect_answers[1], question[0].incorrect_answers[2], question[0].correct_answer];
             var question1_difficulty = question[0].difficulty;
             var question1_category = question[0].category;
 
             var question2 = question[1].question;
-            var question2_alternatives = [question[1].incorrect_answers[0], question[1].incorrect_answers[1], question[1].incorrect_answers[2], question[1].correct_answer ];
+            var question2_alternatives = [question[1].incorrect_answers[0], question[1].incorrect_answers[1], question[1].incorrect_answers[2], question[1].correct_answer];
             var question2_difficulty = question[1].difficulty;
             var question2_category = question[1].category;
 
             var question3 = question[2].question;
-            var question3_alternatives = [question[2].incorrect_answers[0], question[2].incorrect_answers[1], question[2].incorrect_answers[2], question[2].correct_answer ];
+            var question3_alternatives = [question[2].incorrect_answers[0], question[2].incorrect_answers[1], question[2].incorrect_answers[2], question[2].correct_answer];
             var question3_difficulty = question[2].difficulty
             var question3_category = question[2].category;
+
+            //saves the newly shuffled answers into the question variables
+            question1_alternatives = shuffleOptions(question1_alternatives);
+            question2_alternatives = shuffleOptions(question2_alternatives);
+            question3_alternatives = shuffleOptions(question3_alternatives);
 
 
             get('question').innerHTML = "Question: " +question1;
@@ -64,22 +69,30 @@ function loadQuestions(){
     httpRequest.send();
 }
 
-var score = function(){
-    if(choice == question[pos].correct_answer){
-        correct++;
+    var submitAnswers = function(){
+        if(choice == question[pos].correct_answer){
+            correct++;
+        }
     }
 
-}
+    //Gives a response depending on the number of answers you got correct
+    function correctAnswers(score){
+        if (correct == 1) {
+            get('result').innerHTML = "You got 1 questions right";
+        }
+        if (correct == 2){
+            get('result').innerHTML = "You got 2 questions right";
+        }
+        if (correct == 3){
+            get('result').innerHTML = "You got 3 questions right";
+        }
+    }
 
-function correctAnswers(){
-    if (correct == 1) {
-        get('result').innerHTML = "You got 1 questions right";
+    //Shuffles the choice options so that the correct answer is not constantly in the same place
+    function shuffleOptions(array){
+        return array.sort(() => Math.random() - 0.5);
     }
-    if (correct == 2){
-        get('result').innerHTML = "You got 2 questions right";
-    }
-    if (correct == 3){
-        get('result').innerHTML = "You got 3 questions right";
-    }
-}
+
+
+
 loadQuestions();
