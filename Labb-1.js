@@ -1,6 +1,6 @@
-var correct = 3;
+
 var incorrect = 0;
-var question = "none";
+var question;
 var choice = "none";
 var answer = "none";
 
@@ -11,7 +11,7 @@ function get(x){
 
 function loadQuestions(){
     var httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET', 'https://opentdb.com/api.php?amount=3&type=multiple', true);
+    httpRequest.open('GET', 'https://opentdb.com/api.php?amount=3&category=31&difficulty=hard&type=multiple', true);
     
 
     
@@ -19,7 +19,7 @@ function loadQuestions(){
 
     httpRequest.onload = function(){
         if(this.status == 200){
-            var question = JSON.parse(this.responseText).results;
+            question = JSON.parse(this.responseText).results;
             console.log(question);
 
             var question1 = question[0].question;
@@ -49,17 +49,17 @@ function loadQuestions(){
 
             //Creates the radio buttons for answering questions
             for (const question_answer in question1_alternatives) {
-                get('question1-answers').innerHTML += "<input type='radio' name='choices' value='"+question_answer+"'>"
+                get('question1-answers').innerHTML += "<input type='radio' name='question1_choices' value='"+question_answer+"'>"
                 +question1_alternatives[question_answer]+"</input>";
             }
 
             for (const question_answer in question2_alternatives) {
-                get('question2-answers').innerHTML += "<input type='radio' name='choices2' value='"+question_answer+"'>"
+                get('question2-answers').innerHTML += "<input type='radio' name='question2_choices' value='"+question_answer+"'>"
                 +question2_alternatives[question_answer]+"</input>";
             }
 
             for (const question_answer in question3_alternatives) {
-                get('question3-answers').innerHTML += "<input type='radio' name='choices3' value='"+question_answer+"'>"
+                get('question3-answers').innerHTML += "<input type='radio' name='question3_choices' value='"+question_answer+"'>"
                 +question3_alternatives[question_answer]+"</input>";
             }
             
@@ -69,21 +69,42 @@ function loadQuestions(){
     httpRequest.send();
 }
 
-    var submitAnswers = function(){
-        if(choice == question[pos].correct_answer){
-            correct++;
+    //Checks the answers and if they are correct on use
+    function sumbitAnswers() {
+        var correct = 0;
+        
+        document.getElementsByName("question1_choices").forEach(answer => {
+            if (answer.checked && htmlEntities(answer.nextSibling.data) === question[0].correct_answer) {
+                correct += 1;
+            }
+        })
+        document.getElementsByName("question2_choices").forEach(answer => {
+            if(answer.checked && htmlEntities(answer.nextSibling.data)  === question[1].correct_answer)
+                correct += 1;
+        })
+        document.getElementsByName("question3_choices").forEach(answer => {
+            if(answer.checked && htmlEntities(answer.nextSibling.data)  === question[2].correct_answer)
+                correct += 1;
+        })
+        displayResults(correct);
+    }     
+    
+    //displays the results based on answers
+    function displayResults(correct){
+        if ( correct === 0){
+            get('result').innerHTML = "You need to study more anime :)"
         }
-    }
-
-    //Gives a response depending on the number of answers you got correct
-    function correctAnswers(score){
-        if (correct == 1) {
+        
+        if (correct === 1) {
+            console.log("You got 1 question right");
             get('result').innerHTML = "You got 1 questions right";
         }
-        if (correct == 2){
+        if (correct === 2){
             get('result').innerHTML = "You got 2 questions right";
+            console.log("You got 2 questions right");
         }
-        if (correct == 3){
+        if (correct === 3){
+            console.log("You got all questions right!");
             get('result').innerHTML = "You got 3 questions right";
         }
     }
@@ -91,6 +112,10 @@ function loadQuestions(){
     //Shuffles the choice options so that the correct answer is not constantly in the same place
     function shuffleOptions(array){
         return array.sort(() => Math.random() - 0.5);
+    }
+    //Makes odd signs not screw with the answer function
+    function htmlEntities(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
 
