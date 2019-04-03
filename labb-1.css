@@ -10,61 +10,61 @@ body{
 }
 
 @media only screen and (min-width: 900px){
-#header{
-    font-weight: bold;
-    text-align: center;
-    grid-column: 1 / span 4;
-    grid-row: 1;
-    font-size: 45px;
-}
+    #header{
+        font-weight: bold;
+        text-align: center;
+        grid-column: 1 / span 4;
+        grid-row: 1;
+        font-size: 45px;
+    }
 
-#question{
-    text-align: center;
-    grid-column: 1 / span 4;
-    grid-row: 3;
-}
+    #question{
+        text-align: center;
+        grid-column: 1 / span 4;
+        grid-row: 3;
+    }
 
-#question1-answers{
-    text-align: center;
-    grid-column: 1 / span 4;
-    grid-row: 4;
-}
+    #question1-answers{
+        text-align: center;
+        grid-column: 1 / span 4;
+        grid-row: 4;
+    }
 
-#question2{
-    text-align: center;
-    grid-column: 1 / span 4;
-    grid-row: 6;
-}
+    #question2{
+        text-align: center;
+        grid-column: 1 / span 4;
+        grid-row: 6;
+    }
 
-#question2-answers{
-    text-align: center;
-    grid-column: 1 / span 4;
-    grid-row: 7;
-}
+    #question2-answers{
+        text-align: center;
+        grid-column: 1 / span 4;
+        grid-row: 7;
+    }
 
-#question3{
-    text-align: center;
-    grid-column: 1 / span 4;
-    grid-row: 9;
-}
+    #question3{
+        text-align: center;
+        grid-column: 1 / span 4;
+        grid-row: 9;
+    }
 
-#question3-answers{
-    text-align: center;
-    grid-column: 1 / span 4;
-    grid-row: 10;
-}
+    #question3-answers{
+        text-align: center;
+        grid-column: 1 / span 4;
+        grid-row: 10;
+    }
 
-#submitButton{
-    text-align: center;
-    grid-column: 3;
-    grid-row: 11;
-}
+    #submitButton{
+        text-align: center;
+        grid-column: 3;
+        grid-row: 11;
+    }
 
-#result{
-    text-align: center;
-    grid-column: 2 / span 3;
-    grid-row: 12;
-}
+    #result{
+        text-align: center;
+        grid-column: 2 / span 3;
+        grid-row: 12;
+    }
 }
 
 @media only screen and (max-width: 899px) {
@@ -72,8 +72,11 @@ body{
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(12, 1fr);
-        background-size: cover;
         color: white;
+        background-size: cover;
+        background-position: center;
+        height: auto;
+        background-attachment: fixed;
         font-size: 10x;
     }
     #header{
@@ -131,4 +134,4 @@ body{
         grid-column: 2 / span 3;
         grid-row: 12;
     }
-  }
+}
