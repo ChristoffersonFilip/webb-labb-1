@@ -1,3 +1,9 @@
+body{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(auto, 1fr);
+}
+
 #header{
     font-weight: bold;
     text-align: center;
