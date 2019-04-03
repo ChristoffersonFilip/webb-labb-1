@@ -1,7 +1,7 @@
 body{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(auto, auto);
+    grid-template-rows: repeat(12, 1fr);
     background-image: url("63g8ulkrnxiz.png");
     background-repeat: no-repeat;
     background-size: 100% 100vh;
@@ -50,13 +50,13 @@ body{
 #question3-answers{
     text-align: center;
     grid-column: 1 / span 4;
-    grid-row: 10
+    grid-row: 10;
 }
 
 #submitButton{
     text-align: center;
     grid-column: 3;
-    grid-row: 10;
+    grid-row: 11;
 }
 
 #result{
@@ -64,3 +64,14 @@ body{
     grid-column: 2 / span 3;
     grid-row: 12;
 }
+
+@media only screen and (max-width: 700px) {
+    body {
+      background-image: url("2013-11-19-11.35.51.jpg");
+      color: red;
+    }
+    #question{
+        color: red;
+        font-size: 70px;
+    }
+  }
