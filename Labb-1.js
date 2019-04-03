@@ -11,7 +11,7 @@ function get(x){
 
 function loadQuestions(){
     var httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET', 'https://opentdb.com/api.php?amount=3&category=31&difficulty=hard&type=multiple', true);
+    httpRequest.open('GET', 'https://opentdb.com/api.php?amount=3&type=multiple', true);
     
 
     
@@ -92,7 +92,7 @@ function loadQuestions(){
     //displays the results based on answers
     function displayResults(correct){
         if ( correct === 0){
-            get('result').innerHTML = "You need to study more anime :)"
+            get('result').innerHTML = "You need to study more :)"
         }
         
         if (correct === 1) {

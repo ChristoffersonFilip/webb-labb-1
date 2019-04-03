@@ -1,38 +1,66 @@
 body{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(auto, 1fr);
+    grid-template-rows: repeat(auto, auto);
+    background-image: url("63g8ulkrnxiz.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100vh;
+    color: white;
+    font-size: 18px;
 }
 
 #header{
     font-weight: bold;
     text-align: center;
+    grid-column: 1 / span 4;
+    grid-row: 1;
+    font-size: 45px;
 }
 
 #question{
     text-align: center;
+    grid-column: 1 / span 4;
+    grid-row: 3;
 }
 
 #question1-answers{
     text-align: center;
+    grid-column: 1 / span 4;
+    grid-row: 4;
 }
 
 #question2{
     text-align: center;
+    grid-column: 1 / span 4;
+    grid-row: 6;
 }
 
 #question2-answers{
     text-align: center;
+    grid-column: 1 / span 4;
+    grid-row: 7;
 }
 
 #question3{
     text-align: center;
+    grid-column: 1 / span 4;
+    grid-row: 9;
 }
 
 #question3-answers{
     text-align: center;
+    grid-column: 1 / span 4;
+    grid-row: 10
 }
 
 #submitButton{
     text-align: center;
+    grid-column: 3;
+    grid-row: 10;
+}
+
+#result{
+    text-align: center;
+    grid-column: 2 / span 3;
+    grid-row: 12;
 }
