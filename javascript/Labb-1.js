@@ -43,6 +43,35 @@ function loadQuestions(){
             get('question2').innerHTML = "Question 2: " +question2;
             get('question3').innerHTML = "Question 3: " +question3;
 
+            //Creates variables that gets the content of the question answers
+            let a = get('question1-answers');
+            let b = get('question2-answers');
+            let c = get('question3-answers');
+
+            //Removes the content of the question alternatives before the user restarts the quiz to make space 
+            //for the new questions without them overlapping
+            function removeQuestionOneAnswers(){
+                while(a.firstChild){
+                    a.removeChild(a.firstChild);
+                }
+            }
+            removeQuestionOneAnswers();
+
+            function removeQuestionTwoAnswers(){
+                while(b.firstChild){
+                    b.removeChild(b.firstChild);
+                }
+            }
+            removeQuestionTwoAnswers();
+
+
+            function removeQuestionThreeAnswers(){
+                while(c.firstChild){
+                    c.removeChild(c.firstChild);
+                }
+            }
+            removeQuestionThreeAnswers();
+
             //Creates the radio buttons for answering questions
             for (const question_answer in question1_alternatives) {
                 get('question1-answers').innerHTML += "<input type='radio' name='question1_choices' value='"+question_answer+"'>"
