@@ -4,7 +4,10 @@ var question;
 var choice = "none";
 var answer = "none";
 
-//document.getElementById("submitTest").addEventListener("click", sumbitAnswers());
+    document.getElementById("submitTest").addEventListener("click", () => {
+        sumbitAnswers()
+        displayResults();
+    });
 //used to not have to repeat document.getElementById constantly
 function get(x){
         return document.getElementById(x);
@@ -19,6 +22,7 @@ function loadQuestions(){
         if(this.status == 200){
             question = JSON.parse(this.responseText).results;
         
+            //Saves all the generated questions and answers in different variables
             var question1 = question[0].question;
             var question1_alternatives =  [question[0].incorrect_answers[0], question[0].incorrect_answers[1], question[0].incorrect_answers[2], question[0].correct_answer];    
 
@@ -34,7 +38,7 @@ function loadQuestions(){
             question2_alternatives = shuffleOptions(question2_alternatives);
             question3_alternatives = shuffleOptions(question3_alternatives);
 
-
+            //Displays the questions on the html site
             get('question').innerHTML = "Question: " +question1;
             get('question2').innerHTML = "Question 2: " +question2;
             get('question3').innerHTML = "Question 3: " +question3;
