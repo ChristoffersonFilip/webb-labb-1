@@ -4,7 +4,7 @@ var question;
 var choice = "none";
 var answer = "none";
 
-//document.getElementById("submitTest").addEventListener("click", sumbitAnswers(), displayResults());
+//document.getElementById("submitTest").addEventListener("click", sumbitAnswers());
 //used to not have to repeat document.getElementById constantly
 function get(x){
         return document.getElementById(x);
@@ -88,16 +88,13 @@ function loadQuestions(){
         }
         
         if (correct === 1) {
-            console.log("You got 1 question right");
-            get('result').innerHTML = "You got 1 questions right";
+            get('result').innerHTML = "You got 1 question right";
         }
         if (correct === 2){
             get('result').innerHTML = "You got 2 questions right";
-            console.log("You got 2 questions right");
         }
         if (correct === 3){
-            console.log("You got all questions right!");
-            get('result').innerHTML = "You got 3 questions right";
+            get('result').innerHTML = "You got all questions right";
         }
     }
 
