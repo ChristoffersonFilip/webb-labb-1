@@ -46,41 +46,7 @@ function loadQuestions(){
             //Displays the questions on the html site
             get('question').innerHTML = "Question: " +question1;
             get('question2').innerHTML = "Question 2: " +question2;
-            get('question3').innerHTML = "Question 3: " +question3;
-
-            /*
-
-            //Creates variables that gets the content of the question answers
-            let a = get('question1-answers');
-            let b = get('question2-answers');
-            let c = get('question3-answers');
-
-            //Removes the content of the question alternatives before the user restarts the quiz to make space 
-            //for the new questions without them overlapping
-            function removeQuestionOneAnswers(){
-                while(a.firstChild){
-                    a.removeChild(a.firstChild);
-                }
-            }
-            removeQuestionOneAnswers();
-
-            function removeQuestionTwoAnswers(){
-                while(b.firstChild){
-                    b.removeChild(b.firstChild);
-                }
-            }
-            removeQuestionTwoAnswers();
-
-
-            function removeQuestionThreeAnswers(){
-                while(c.firstChild){
-                    c.removeChild(c.firstChild);
-                }
-            }
-            removeQuestionThreeAnswers();
-            */
-
-            
+            get('question3').innerHTML = "Question 3: " +question3;          
 
             //Creates the radio buttons for answering questions
             for (const question_answer in question1_alternatives) {
@@ -109,9 +75,17 @@ function loadQuestions(){
         let a = get('question1-answers');
         let b = get('question2-answers');
         let c = get('question3-answers');
+        let d = get('result');
 
         //Removes the content of the question alternatives before the user restarts the quiz to make space 
         //for the new questions without them overlapping
+        function removeResult(){
+            while (d.firstChild){
+                d.removeChild(d.firstChild)
+            }
+        }
+        removeResult();
+
         function removeQuestionOneAnswers(){
             while(a.firstChild){
                 a.removeChild(a.firstChild);
